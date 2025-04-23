@@ -3,413 +3,478 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>King Crypto Box</title>
+    <title>Binance Red Packet Codes | Exclusive Giveaways</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary: #f0b90b;
+            --secondary: #1e2026;
+            --dark: #0b0e11;
+            --light: #f8f9fa;
+            --success: #02c076;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
+        
         body {
-            background: #1A1D26; /* Binance dark navy */
-            color: #FFFFFF;
+            background-color: var(--dark);
+            color: var(--light);
             min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(240, 185, 11, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(240, 185, 11, 0.1) 0%, transparent 20%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(240, 185, 11, 0.2);
+            margin-bottom: 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .logo img {
+            height: 40px;
+        }
+        
+        .timer {
+            background-color: rgba(240, 185, 11, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--primary), #f8d12f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p {
+            color: #b7bdc6;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+        
+        .code-container {
+            background-color: var(--secondary);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2rem;
+            border: 1px solid rgba(240, 185, 11, 0.2);
+        }
+        
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .code-header h2 {
+            color: var(--primary);
+        }
+        
+        .refresh-btn {
+            background-color: rgba(240, 185, 11, 0.1);
+            color: var(--primary);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+        
+        .refresh-btn:hover {
+            background-color: rgba(240, 185, 11, 0.2);
+        }
+        
+        .codes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        
+        .code-card {
+            background-color: rgba(30, 32, 38, 0.8);
+            border: 1px solid rgba(240, 185, 11, 0.2);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .code-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(240, 185, 11, 0.1);
+            border-color: rgba(240, 185, 11, 0.4);
+        }
+        
+        .code-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(240, 185, 11, 0.1) 0%, transparent 50%);
+            z-index: 0;
+        }
+        
+        .code-value {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            word-break: break-all;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .code-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #b7bdc6;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .copy-btn {
+            background-color: var(--primary);
+            color: var(--dark);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .copy-btn:hover {
+            background-color: #f8d12f;
+        }
+        
+        .copy-btn.copied {
+            background-color: var(--success);
+            color: white;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            background-color: var(--secondary);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(240, 185, 11, 0.2);
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: #b7bdc6;
+            font-size: 0.9rem;
+        }
+        
+        .how-to {
+            background-color: var(--secondary);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(240, 185, 11, 0.2);
+        }
+        
+        .how-to h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .steps {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            touch-action: pan-y; /* Prevent default scrolling interference */
+            gap: 1.5rem;
         }
-
-        /* Header */
-        header {
-            width: 100%;
-            background: #12151C; /* Darker navy */
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        
+        .step {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .step-number {
+            background-color: var(--primary);
+            color: var(--dark);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            font-weight: bold;
+            flex-shrink: 0;
         }
-
-        header img.logo {
-            max-height: 40px;
-            vertical-align: middle;
+        
+        .step-content h3 {
+            margin-bottom: 0.5rem;
         }
-
-        header h1 {
-            font-size: 2.5em;
-            color: #F0B90B; /* Binance yellow */
-            text-transform: uppercase;
-            letter-spacing: 2px;
+        
+        .step-content p {
+            color: #b7bdc6;
+            line-height: 1.6;
         }
-
-        /* Main Content */
-        main {
-            flex: 1;
-            width: 100%;
-            max-width: 1200px;
-            padding: 40px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .code-section {
-            background: #242630; /* Slightly lighter navy */
-            border-radius: 10px;
-            padding: 30px;
-            width: 100%;
-            max-width: 600px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            margin-bottom: 40px;
-        }
-
-        .code-section h2 {
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            color: #F0B90B;
-        }
-
-        .code-section p {
-            font-size: 1.1em;
-            color: #B0B3B8; /* Light gray */
-            margin-bottom: 20px;
-        }
-
-        .code-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .code-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: #1A1D26;
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid #F0B90B;
-        }
-
-        .code {
-            flex: 1;
-            font-size: 1.2em;
-            color: #FFFFFF;
-            word-break: break-all;
-        }
-
-        .copy-btn {
-            padding: 8px 12px;
-            background: #F0B90B;
-            border: none;
-            border-radius: 5px;
-            color: #1A1D26;
-            font-size: 0.9em;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .copy-btn:hover {
-            background: #D4A00A;
-        }
-
-        .copy-btn.copied {
-            background: #00CC88; /* Green for success */
-            color: #FFFFFF;
-        }
-
-        /* Admin Login and Panel */
-        .admin-login, .admin-panel {
-            background: #242630;
-            border-radius: 10px;
-            padding: 30px;
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            margin-bottom: 40px;
-        }
-
-        .admin-login h3, .admin-panel h3 {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            color: #F0B90B;
-        }
-
-        .admin-login input, .admin-panel textarea {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 5px;
-            background: #1A1D26;
-            color: #FFFFFF;
-            font-size: 1em;
-            resize: vertical;
-        }
-
-        .admin-login input:focus, .admin-panel textarea:focus {
-            outline: none;
-            box-shadow: 0 0 5px #F0B90B;
-        }
-
-        .admin-login button, .admin-panel button {
-            width: 100%;
-            padding: 12px;
-            background: #F0B90B;
-            border: none;
-            border-radius: 5px;
-            color: #1A1D26;
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .admin-login button:hover, .admin-panel button:hover {
-            background: #D4A00A;
-        }
-
-        .logout-btn {
-            background: #B0B3B8;
-            margin-top: 10px;
-        }
-
-        .logout-btn:hover {
-            background: #909296;
-        }
-
-        /* Footer */
+        
         footer {
-            width: 100%;
-            padding: 20px;
             text-align: center;
-            background: #12151C;
-            color: #B0B3B8;
+            padding: 2rem 0;
+            color: #b7bdc6;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(240, 185, 11, 0.2);
         }
-
-        /* Responsive Design */
-        @media (max-width: 600px) {
-            header {
-                flex-direction: column;
-                gap: 5px;
-            }
-
-            header h1 {
-                font-size: 2em;
-            }
-
-            header img.logo {
-                max-height: 30px;
-            }
-
-            .code-section, .admin-login, .admin-panel {
-                padding: 20px;
-            }
-
-            .code-section h2, .admin-login h3, .admin-panel h3 {
-                font-size: 1.5em;
-            }
-
-            .code-container {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .copy-btn {
-                width: 100%;
-            }
+        
+        .disclaimer {
+            background-color: rgba(240, 185, 11, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            border-left: 4px solid var(--primary);
         }
-
-        .hidden {
-            display: none;
+        
+        @media (max-width: 768px) {
+            .codes-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <img src="https://via.placeholder.com/40x40.png?text=CRP" alt="Crypto Red Packet Logo" class="logo">
-        <h1>King Crypto Box</h1>
-    </header>
-
-    <!-- Main Content -->
-    <main>
-        <!-- Red Packet Codes Section -->
-        <section class="code-section">
-            <h2>Binance Red Packet Codes</h2>
-            <p>Claim your exclusive Binance red packet codes below!</p>
-            <div class="code-list" id="codeList">
-                <!-- Codes will be dynamically added here -->
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-gift"></i>
+                <span>Binance Red Packets</span>
             </div>
+            <div class="timer">
+                <i class="fas fa-clock"></i>
+                <span id="countdown">New codes in: 12:34:56</span>
+            </div>
+        </header>
+        
+        <section class="hero">
+            <h1>Exclusive Binance Red Packet Codes</h1>
+            <p>Claim your free crypto rewards with these limited-time Binance Red Packet codes. Copy and redeem them in the Binance app before they expire!</p>
         </section>
-
-        <!-- Admin Login (Hidden by default) -->
-        <section class="admin-login hidden" id="adminLogin">
-            <h3>Admin Login</h3>
-            <form id="adminForm" onsubmit="handleLogin(event)">
-                <input type="text" id="username" placeholder="Username" required>
-                <input type="password" id="password" placeholder="Password" required>
-                <button type="submit">Login</button>
-            </form>
-        </section>
-
-        <!-- Admin Panel (Hidden until login) -->
-        <section class="admin-panel hidden" id="adminPanel">
-            <h3>Add Red Packet Codes</h3>
-            <form id="codeForm" onsubmit="addCodes(event)">
-                <textarea id="newCodes" rows="5" placeholder="Enter multiple codes (separated by commas, spaces, or newlines)" required></textarea>
-                <button type="submit">Add Codes</button>
-            </form>
-            <button class="logout-btn" onclick="logout()">Logout</button>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <p>© 2025 King Crypto Box. All rights reserved.</p>
-    </footer>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-value" id="total-codes">24</div>
+                <div class="stat-label">Active Codes</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="total-claimed">1,842</div>
+                <div class="stat-label">Total Claims</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="success-rate">92%</div>
+                <div class="stat-label">Success Rate</div>
+            </div>
+        </div>
+        
+        <div class="code-container">
+            <div class="code-header">
+                <h2><i class="fas fa-fire"></i> Latest Red Packet Codes</h2>
+                <button class="refresh-btn" id="refresh-btn">
+                    <i class="fas fa-sync-alt"></i>
+                    Refresh
+                </button>
+            </div>
+            
+            <div class="codes-grid" id="codes-container">
+                <!-- Codes will be loaded here dynamically -->
+            </div>
+        </div>
+        
+        <div class="how-to">
+            <h2><i class="fas fa-question-circle"></i> How to Redeem</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Copy a Red Packet code</h3>
+                        <p>Click the "Copy Code" button next to any active code above. The code will be copied to your clipboard.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Open Binance App</h3>
+                        <p>Launch the Binance mobile app on your device and make sure you're logged in to your account.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Redeem the code</h3>
+                        <p>Go to the Rewards Center or Red Packet section in the app and paste the code to claim your crypto reward.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="disclaimer">
+            <p><strong>Note:</strong> These codes are time-sensitive and may expire without notice. Each code can only be redeemed once per account. This is not an official Binance website.</p>
+        </div>
+        
+        <footer>
+            <p>© 2023 Binance Red Packet Codes. Not affiliated with Binance.</p>
+        </footer>
+    </div>
 
     <script>
-        // Load codes from localStorage
-        let codes = JSON.parse(localStorage.getItem('redPacketCodes')) || [];
+        // Sample data - in production, this would come from your server
+        const sampleCodes = [
+            { code: "BPRP2023XYZ123", value: "$5-20", expires: "2023-12-31", claims: 142 },
+            { code: "BINANCEGIFT50", value: "$3-15", expires: "2023-12-25", claims: 89 },
+            { code: "REDPACKET888", value: "$10-50", expires: "2023-12-20", claims: 210 },
+            { code: "BNBGIFT2023", value: "$1-10", expires: "2023-12-15", claims: 312 },
+            { code: "CRYPTORED22", value: "$5-25", expires: "2023-12-10", claims: 176 },
+            { code: "BINANCERED88", value: "$2-12", expires: "2023-12-05", claims: 198 },
+        ];
 
-        // Display codes
-        function displayCodes() {
-            const codeList = document.getElementById('codeList');
-            codeList.innerHTML = '';
-            if (codes.length === 0) {
-                codeList.innerHTML = '<p>No codes available.</p>';
-            } else {
-                codes.forEach(code => {
-                    const codeContainer = document.createElement('div');
-                    codeContainer.className = 'code-container';
-                    
-                    const codeDiv = document.createElement('div');
-                    codeDiv.className = 'code';
-                    codeDiv.textContent = code.code;
-                    
-                    const copyBtn = document.createElement('button');
-                    copyBtn.className = 'copy-btn';
-                    copyBtn.textContent = 'Copy';
-                    copyBtn.onclick = () => copyCode(code.code, copyBtn);
-                    
-                    codeContainer.appendChild(codeDiv);
-                    codeContainer.appendChild(copyBtn);
-                    codeList.appendChild(codeContainer);
-                });
+        // Function to load codes from server
+        async function loadCodes() {
+            try {
+                const response = await fetch('/get-codes.php');
+                const codes = await response.json();
+                displayCodes(codes);
+            } catch (error) {
+                console.error('Error loading codes:', error);
+                // Fallback to sample codes if server fails
+                displayCodes(sampleCodes);
             }
         }
 
-        // Copy code to clipboard
-        function copyCode(code, button) {
-            navigator.clipboard.writeText(code).then(() => {
-                button.textContent = 'Copied!';
-                button.classList.add('copied');
-                setTimeout(() => {
-                    button.textContent = 'Copy';
-                    button.classList.remove('copied');
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy:', err);
-                alert('Failed to copy code.');
+        // Function to display codes
+        function displayCodes(codes) {
+            const container = document.getElementById('codes-container');
+            container.innerHTML = '';
+            
+            document.getElementById('total-codes').textContent = codes.length;
+            
+            codes.forEach(code => {
+                const codeCard = document.createElement('div');
+                codeCard.className = 'code-card';
+                codeCard.innerHTML = `
+                    <div class="code-value">${code.code}</div>
+                    <div class="code-meta">
+                        <span>Value: ${code.value}</span>
+                        <span>Expires: ${code.expires}</span>
+                    </div>
+                    <button class="copy-btn" data-code="${code.code}">
+                        <i class="fas fa-copy"></i> Copy Code
+                    </button>
+                `;
+                container.appendChild(codeCard);
+            });
+            
+            // Add event listeners to copy buttons
+            document.querySelectorAll('.copy-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const code = this.getAttribute('data-code');
+                    navigator.clipboard.writeText(code).then(() => {
+                        this.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                        this.classList.add('copied');
+                        setTimeout(() => {
+                            this.innerHTML = '<i class="fas fa-copy"></i> Copy Code';
+                            this.classList.remove('copied');
+                        }, 2000);
+                    });
+                });
             });
         }
 
-        // Handle admin login
-        function handleLogin(event) {
-            event.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            if (username === 'Amir' && password === 'Prince2021') {
-                document.getElementById('adminLogin').classList.add('hidden');
-                document.getElementById('adminPanel').classList.remove('hidden');
-            } else {
-                alert('Invalid username or password.');
-            }
+        // Countdown timer
+        function updateCountdown() {
+            const now = new Date();
+            const nextHour = new Date();
+            nextHour.setHours(now.getHours() + 1);
+            nextHour.setMinutes(0);
+            nextHour.setSeconds(0);
+            
+            const diff = nextHour - now;
+            
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('countdown').textContent = 
+                `New codes in: ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         }
 
-        // Add multiple codes
-        function addCodes(event) {
-            event.preventDefault();
-            const newCodesInput = document.getElementById('newCodes').value.trim();
-            if (!newCodesInput) {
-                alert('Please enter at least one code.');
-                return;
-            }
-
-            // Split input by commas, newlines, or spaces, and filter out empty entries
-            const newCodes = newCodesInput
-                .split(/[\n,\s]+/)
-                .map(code => code.trim())
-                .filter(code => code.length > 0)
-                .map(code => ({
-                    code,
-                    timestamp: Date.now()
-                }));
-
-            if (newCodes.length === 0) {
-                alert('No valid codes entered.');
-                return;
-            }
-
-            // Add new codes to the existing list
-            codes = [...codes, ...newCodes];
-            localStorage.setItem('redPacketCodes', JSON.stringify(codes));
-            document.getElementById('newCodes').value = '';
-            displayCodes();
-            alert(`${newCodes.length} code(s) added successfully!`);
-        }
-
-        // Remove expired codes (older than 3 hours)
-        function removeExpiredCodes() {
-            const now = Date.now();
-            const threeHours = 3 * 60 * 60 * 1000; // 3 hours in milliseconds
-            codes = codes.filter(code => now - code.timestamp < threeHours);
-            localStorage.setItem('redPacketCodes', JSON.stringify(codes));
-            displayCodes();
-        }
-
-        // Check for expired codes every minute
-        setInterval(removeExpiredCodes, 60 * 1000);
-
-        // Logout
-        function logout() {
-            document.getElementById('adminPanel').classList.add('hidden');
-            document.getElementById('adminLogin').classList.remove('hidden');
-            document.getElementById('adminForm').reset();
-        }
-
-        // Two-finger swipe down to show admin login
-        let touchStartY = 0;
-        let touchCount = 0;
-
-        document.addEventListener('touchstart', (e) => {
-            if (e.touches.length === 2) {
-                touchCount = 2;
-                touchStartY = e.touches[0].clientY;
-            }
-        });
-
-        document.addEventListener('touchmove', (e) => {
-            if (touchCount === 2 && e.touches.length === 2) {
-                const touchEndY = e.touches[0].clientY;
-                if (touchEndY - touchStartY > 50) { // Swipe down by 50px
-                    document.getElementById('adminLogin').classList.remove('hidden');
-                    touchCount = 0; // Reset to prevent multiple triggers
-                }
-            }
-        });
+        // Refresh button
+        document.getElementById('refresh-btn').addEventListener('click', loadCodes);
 
         // Initialize
-        removeExpiredCodes(); // Clean up expired codes on load
-        displayCodes();
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCodes();
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        });
     </script>
 </body>
 </html>
